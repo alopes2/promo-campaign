@@ -9,11 +9,11 @@ using PromoCampaign.Core.Services;
 namespace PromoCampaign.Controllers
 {
     [Route("api/[controller]")]
-    public class ProductController : Controller
+    public class ProductsController : Controller
     {
         private readonly IMapper _mapper;
         private readonly IProductService service;
-        public ProductController(IMapper mapper, IProductService service)
+        public ProductsController(IMapper mapper, IProductService service)
         {
             this.service = service;
             this._mapper = mapper;

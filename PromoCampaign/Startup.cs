@@ -32,6 +32,7 @@ namespace PromoCampaign
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICampaignRepository, CampaignRepository>();
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<ICampaignService, CampaignService>();
 
             services.AddAutoMapper();
 

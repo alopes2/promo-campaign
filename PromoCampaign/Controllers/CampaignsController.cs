@@ -30,5 +30,30 @@ namespace PromoCampaign.Controllers
 
             return Ok(campaignsResources);
         }
+
+        [HttpPost()]
+        public async Task<IActionResult> AddNewCampaign([FromBody] CampaignResource newCampaignResource) 
+        {
+            if (!ModelState.IsValid) {
+                return BadRequest("Please, check your properties' values");
+            }
+
+            if (newCampaignResource.Product == null || newCampaignResource.Product.Id == null) {
+                return BadRequest("Please, select a product");
+            }
+
+            if (newCampaignResource.Start.CompareTo(DateTime.Now) <= 0) {
+                return BadRequest("The start date needs to be later than today");
+            }
+
+            if (newCampaignResource.Start.CompareTo(newCampaignResource.End) <= 0) {
+                return BadRequest("The start date needs to be later than the end date");
+            }
+            var newCampaign = _mapper.Map<CampaignResource, Campaign>(newCampaignResource);
+
+            var campaign =  await service.AddCampaignAsync(newCampaign);
+            var campaignResource = _mapper.Map<Campaign, CampaignResource>(campaign);
+            return Ok(campaignResource);
+        }
     }
 }

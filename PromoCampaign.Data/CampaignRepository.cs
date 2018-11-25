@@ -20,5 +20,11 @@ namespace PromoCampaign.Data
                 .Campaigns
                 .ToListAsync();
         }
+        public async Task AddAsync(Campaign newCampaign)
+        {
+            await _context
+                .Campaigns
+                .AddAsync(newCampaign);
+        }
     }
 }

@@ -15,6 +15,8 @@ namespace PromoCampaign.Mappings
             // API Resource to Domain
             CreateMap<ProductResource, Product>(); 
             CreateMap<CampaignResource, Campaign>();
+            CreateMap<SaveCampaignResource, Campaign>()
+                .ForMember(c => c.Id, opt => opt.Ignore());
         } 
     }
 }

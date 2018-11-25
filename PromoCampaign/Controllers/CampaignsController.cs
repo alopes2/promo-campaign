@@ -32,13 +32,13 @@ namespace PromoCampaign.Controllers
         }
 
         [HttpPost()]
-        public async Task<IActionResult> AddNewCampaign([FromBody] CampaignResource newCampaignResource) 
+        public async Task<IActionResult> AddNewCampaign([FromBody] SaveCampaignResource newCampaignResource) 
         {
             if (!ModelState.IsValid) {
                 return BadRequest("Please, check your properties' values");
             }
 
-            if (newCampaignResource.Product == null || newCampaignResource.Product.Id == null) {
+            if (newCampaignResource.ProductId == null) {
                 return BadRequest("Please, select a product");
             }
 
@@ -46,10 +46,10 @@ namespace PromoCampaign.Controllers
                 return BadRequest("The start date needs to be later than today");
             }
 
-            if (newCampaignResource.Start.CompareTo(newCampaignResource.End) <= 0) {
+            if (newCampaignResource.Start.CompareTo(newCampaignResource.End) > 0) {
                 return BadRequest("The start date needs to be later than the end date");
             }
-            var newCampaign = _mapper.Map<CampaignResource, Campaign>(newCampaignResource);
+            var newCampaign = _mapper.Map<SaveCampaignResource, Campaign>(newCampaignResource);
 
             var campaign =  await service.AddCampaignAsync(newCampaign);
             var campaignResource = _mapper.Map<Campaign, CampaignResource>(campaign);

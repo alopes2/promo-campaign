@@ -7,7 +7,8 @@ class NewCampaign extends Component {
         campaign: {
             name: 'New Test',
             productId: 1,
-            start: new Date('')
+            start: new Date('11/26/2018'),
+            end: new Date('11/30/2018')
         }
     };
 
@@ -25,6 +26,7 @@ class NewCampaign extends Component {
         
         try {
             const data = this.state.campaign;
+            console.log(data);
             const response = await axios.post('/api/Campaigns', data);
             console.log(response);
         } catch (e) {

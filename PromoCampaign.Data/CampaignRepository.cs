@@ -18,6 +18,7 @@ namespace PromoCampaign.Data
         {
             return await _context
                 .Campaigns
+                .Include(c => c.Product)
                 .ToListAsync();
         }
         public async Task AddAsync(Campaign newCampaign)

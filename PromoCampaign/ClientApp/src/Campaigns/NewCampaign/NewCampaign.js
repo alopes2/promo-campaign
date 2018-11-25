@@ -5,10 +5,10 @@ class NewCampaign extends Component {
     state = {
         products: [],
         campaign: {
-            name: 'New Test',
+            name: '',
             productId: 1,
-            start: new Date('11/26/2018'),
-            end: new Date('11/30/2018')
+            start: '',
+            end: ''
         }
     };
 
@@ -34,6 +34,10 @@ class NewCampaign extends Component {
         }
     }
 
+    handleInputChange = (event) => {
+        console.log(event.target.value);
+    }
+
     discardChangesHandler = async (event) => {
         event.preventDefault();
         this.props.history.push('/campaigns');
@@ -42,14 +46,20 @@ class NewCampaign extends Component {
     render() {
         return (
             <div>
+                <h1>Add new campaign</h1>
                 <form onSubmit={this.handleAddNewCampaign}>
-                    <div className="form-control">
+                    <div className="form-group">
                         <label htmlFor="name">Name</label>
-                        <input type="text" name="name" id="name" />
+                        <input 
+                            onChange={this.handleInputChange}
+                            className="form-control" 
+                            type="text" name="name" id="name" />
                     </div>
-                    <div className="form-control">
+                    <div className="form-group">
                         <label htmlFor="product">Product</label>
-                        <select name="product" id="product">
+                        <select 
+                            onChange={this.handleInputChange}
+                            className="form-control" name="product" id="product">
                             {
                                 this.state.products
                                     .map(p => (
@@ -60,16 +70,20 @@ class NewCampaign extends Component {
                             }
                         </select>
                     </div>
-                    <div className="form-control">
+                    <div className="form-group">
                         <label htmlFor="start">Start</label>
-                        <input type="date" name="start" id="start" />
+                        <input 
+                            onChange={this.handleInputChange}
+                            className="form-control" type="date" name="start" id="start" />
                     </div>
-                    <div className="form-control">
+                    <div className="form-group">
                         <label htmlFor="end">End</label>
-                        <input type="date" name="end" id="end" />
+                        <input 
+                            onChange={this.handleInputChange}
+                            className="form-control" type="date" name="end" id="end" />
                     </div>
-                    <button onClick={this.discardChangesHandler} type="button">discard changes</button>
-                    <button type="submit">add new campaign</button>
+                    <button className="btn btn-warning" onClick={this.discardChangesHandler} type="button">discard changes</button>
+                    <button className="btn btn-info" type="submit">add new campaign</button>
                 </form>
             </div>
         );

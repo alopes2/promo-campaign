@@ -1,5 +1,10 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using PromoCampaign.Controllers.Resources;
+using PromoCampaign.Core.Models;
+using PromoCampaign.Core.Services;
 
 namespace PromoCampaign.Controllers
 {
@@ -7,14 +12,23 @@ namespace PromoCampaign.Controllers
     public class ProductController : Controller
     {
         private readonly IMapper _mapper;
-        public ProductController(IMapper mapper)
+        private readonly IProductService service;
+        public ProductController(IMapper mapper, IProductService service)
         {
+            this.service = service;
             this._mapper = mapper;
+
         }
 
-        public Task<IActionResult> GetProducts() 
+        public async Task<IActionResult> GetProductsAsync()
         {
-            return Ok();
+            var products = await this.service
+                .GetAllProductsAsync();
+            
+            var productsResources = _mapper
+                        .Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
+                        
+            return Ok(productsResources);
         }
     }
 }

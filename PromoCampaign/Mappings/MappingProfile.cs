@@ -1,6 +1,6 @@
 using AutoMapper;
 using PromoCampaign.Controllers.Resources;
-using PromoCampaign.Persistence.Models;
+using PromoCampaign.Core.Models;
 
 namespace PromoCampaign.Mappings
 {

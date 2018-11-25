@@ -8,7 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PromoCampaign.Core.Repository;
-using PromoCampaign.Persistence;
+using PromoCampaign.Core.Services;
+using PromoCampaign.Data;
 
 namespace PromoCampaign
 {
@@ -24,12 +25,13 @@ namespace PromoCampaign
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<PromoCampaignDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddDbContext<PromoCampaignDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default"), x => x.MigrationsAssembly("PromoCampaign.Data")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICampaignRepository, CampaignRepository>();
+            services.AddTransient<IProductService, ProductService>();
 
             services.AddAutoMapper();
 

@@ -1,0 +1,11 @@
+/home/andre/PromoCampaign/PromoCampaign.Core/bin/Debug/netcoreapp2.1/PromoCampaign.Core.deps.json
+/home/andre/PromoCampaign/PromoCampaign.Core/bin/Debug/netcoreapp2.1/PromoCampaign.Core.runtimeconfig.json
+/home/andre/PromoCampaign/PromoCampaign.Core/bin/Debug/netcoreapp2.1/PromoCampaign.Core.runtimeconfig.dev.json
+/home/andre/PromoCampaign/PromoCampaign.Core/bin/Debug/netcoreapp2.1/PromoCampaign.Core.dll
+/home/andre/PromoCampaign/PromoCampaign.Core/bin/Debug/netcoreapp2.1/PromoCampaign.Core.pdb
+/home/andre/PromoCampaign/PromoCampaign.Core/obj/Debug/netcoreapp2.1/PromoCampaign.Core.csprojAssemblyReference.cache
+/home/andre/PromoCampaign/PromoCampaign.Core/obj/Debug/netcoreapp2.1/PromoCampaign.Core.csproj.CoreCompileInputs.cache
+/home/andre/PromoCampaign/PromoCampaign.Core/obj/Debug/netcoreapp2.1/PromoCampaign.Core.AssemblyInfoInputs.cache
+/home/andre/PromoCampaign/PromoCampaign.Core/obj/Debug/netcoreapp2.1/PromoCampaign.Core.AssemblyInfo.cs
+/home/andre/PromoCampaign/PromoCampaign.Core/obj/Debug/netcoreapp2.1/PromoCampaign.Core.dll
+/home/andre/PromoCampaign/PromoCampaign.Core/obj/Debug/netcoreapp2.1/PromoCampaign.Core.pdb

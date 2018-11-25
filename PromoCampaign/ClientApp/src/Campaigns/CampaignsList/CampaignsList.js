@@ -21,7 +21,7 @@ class CampaignsList extends Component {
             { title: 'End', key: 'end', isSortable: true}
         ]
     };
-    
+
     async fetchCampaigns() {
         try {
             const response = await axios.get('/api/Campaigns');
@@ -36,8 +36,22 @@ class CampaignsList extends Component {
         this.fetchCampaigns();
     }
 
+    handleFilterChange = (event) => {
+        const updatedFilter = {
+            ...this.state.filter,
+            isActive: event.target.value
+        };
+        console.log(updatedFilter);
+        this.setState({filter: updatedFilter})
+    }
+
     handleSortBy = (column) => {
 
+    }
+
+    formatDate(stringDate) {
+        const date = new Date(stringDate);
+        return `${date.getMonth() + 1}.${date.getDate()}.${date.getFullYear()}`;
     }
 
     render() {
@@ -53,12 +67,11 @@ class CampaignsList extends Component {
                          <tr key={c.id}>
                              <td>{c.name}</td>
                              <td>{c.product.name}</td>
-                             <td>{c.start}</td>
-                             <td>{c.end}</td>
+                             <td>{this.formatDate(c.start)}</td>
+                             <td>{this.formatDate(c.end)}</td>
                          </tr>
                      ));
         }
-        console.log(this.state);
 
         let columnHeaders = this.state.columns
             .map(col => {
@@ -80,16 +93,29 @@ class CampaignsList extends Component {
                 </th>);
             });
         return (
-            <table className="table">
-                <thead>
-                    <tr>
-                        {columnHeaders}
-                    </tr>
-                </thead>
-                <tbody>
-                    {list}
-                </tbody>
-            </table>
+            <div>
+                <h1>Campaigns List</h1>
+                <div className="well">
+                        <div className="form-group">
+                            <label for="active">Active status</label>
+                            <select name="active" id="active" className="form-control" onChange={this.handleFilterChange}>
+                                <option value=""></option>
+                                <option value={true}>Active</option>
+                                <option value={false}>Inactive</option>
+                            </select>
+                    </div>
+                </div>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            {columnHeaders}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {list}
+                    </tbody>
+                </table>
+            </div>
         );
     }
 }

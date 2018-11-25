@@ -1,0 +1,9 @@
+.container {
+    margin: 0 20%;
+}
+
+@media (max-width: 500px){
+    .container {
+        margin: 0 5%;
+    }
+}

@@ -1,0 +1,14 @@
+/home/andre/PromoCampaign/PromoCampaign.Tests/bin/Debug/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/home/andre/PromoCampaign/PromoCampaign.Tests/bin/Debug/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll
+/home/andre/PromoCampaign/PromoCampaign.Tests/bin/Debug/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll
+/home/andre/PromoCampaign/PromoCampaign.Tests/bin/Debug/netcoreapp2.1/PromoCampaign.Tests.deps.json
+/home/andre/PromoCampaign/PromoCampaign.Tests/bin/Debug/netcoreapp2.1/PromoCampaign.Tests.runtimeconfig.json
+/home/andre/PromoCampaign/PromoCampaign.Tests/bin/Debug/netcoreapp2.1/PromoCampaign.Tests.runtimeconfig.dev.json
+/home/andre/PromoCampaign/PromoCampaign.Tests/bin/Debug/netcoreapp2.1/PromoCampaign.Tests.dll
+/home/andre/PromoCampaign/PromoCampaign.Tests/bin/Debug/netcoreapp2.1/PromoCampaign.Tests.pdb
+/home/andre/PromoCampaign/PromoCampaign.Tests/obj/Debug/netcoreapp2.1/PromoCampaign.Tests.csprojAssemblyReference.cache
+/home/andre/PromoCampaign/PromoCampaign.Tests/obj/Debug/netcoreapp2.1/PromoCampaign.Tests.csproj.CoreCompileInputs.cache
+/home/andre/PromoCampaign/PromoCampaign.Tests/obj/Debug/netcoreapp2.1/PromoCampaign.Tests.AssemblyInfoInputs.cache
+/home/andre/PromoCampaign/PromoCampaign.Tests/obj/Debug/netcoreapp2.1/PromoCampaign.Tests.AssemblyInfo.cs
+/home/andre/PromoCampaign/PromoCampaign.Tests/obj/Debug/netcoreapp2.1/PromoCampaign.Tests.dll
+/home/andre/PromoCampaign/PromoCampaign.Tests/obj/Debug/netcoreapp2.1/PromoCampaign.Tests.pdb

@@ -26,9 +26,8 @@ class NewCampaign extends Component {
         
         try {
             const data = this.state.campaign;
-            console.log(data);
             const response = await axios.post('/api/Campaigns', data);
-            console.log(response);
+            this.props.history.push('..')
         } catch (e) {
             console.error(e);
         }

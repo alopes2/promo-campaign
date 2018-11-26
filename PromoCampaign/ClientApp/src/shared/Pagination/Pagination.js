@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import './Pagination.scss';
 
 class Pagination extends Component {
-    state = {
-        pages: [],
-        currentPage: 1,
-        pagesCount: 0
-    };
+
+    shouldComponentUpdate(nextProps) {
+        if (this.props.currentPage === 1 ||
+                this.props.currentPage !== nextProps.currentPage) {
+                    return true;
+                }
+
+        return false;
+    }
 
 	changePage = (page) => {
 		this.setState({currentPage: page})
@@ -14,10 +18,10 @@ class Pagination extends Component {
 	}
 
 	previous = () => {
-		if (this.state.currentPage === 1)
+		if (this.props.currentPage === 1)
             return;
         
-        const page = this.state.currentPage - 1;
+        const page = this.props.currentPage - 1;
             
         this.setState({
             currentPage: page
@@ -26,11 +30,11 @@ class Pagination extends Component {
         this.props.onChangePage(page);
 	}
 
-	next = () => {
-		if (this.state.currentPage === this.state.pages.length)
+	next = (totalPages) => {
+		if (this.props.currentPage === totalPages)
             return;
         
-        const page = this.state.currentPage + 1;
+        const page = this.props.currentPage + 1;
             
         this.setState({
             currentPage: page
@@ -48,7 +52,7 @@ class Pagination extends Component {
         let nav = null;
 
         if (this.props.totalItems > this.props.pageSize) {
-            const previousArrowClass = this.state.currentPage === 1 
+            const previousArrowClass = this.props.currentPage === 1 
                 ? 'disabled'
                 : '';
 
@@ -62,7 +66,7 @@ class Pagination extends Component {
             
             const pageNumbers = pages
                 .map(p => {
-                    const classes = this.state.currentPage === p 
+                    const classes = this.props.currentPage === p 
                         ? 'active'
                         : '';
                     return (
@@ -74,13 +78,13 @@ class Pagination extends Component {
                         </li>
                     );
                 });
-            const nextArrowClass = this.state.currentPage === pages.length
+            const nextArrowClass = this.props.currentPage === pages.length
                 ? 'disabled'
                 : '';
     
             const nextArrow = (
                 <li className={nextArrowClass}>
-                    <a onClick={this.next} aria-label="Next">
+                    <a onClick={() => {this.next(pages.length)}} aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

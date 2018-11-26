@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {utility} from '../../shared/utility';
 import './CampaignsList.scss';
-import Pagination from '../../shared/Pagination';
+import Pagination from '../../shared/Pagination/Pagination';
 class CampaignsList extends Component {
     state = {
         totalItems: 0,
@@ -42,7 +42,8 @@ class CampaignsList extends Component {
     handleFilterChange = (event) => {
         const updatedFilter = {
             ...this.state.filter,
-            isActive: event.target.value
+            isActive: event.target.value,
+            page: 1
         };
         this.setState({filter: updatedFilter}, () => {
             this.fetchCampaigns();
@@ -83,47 +84,48 @@ class CampaignsList extends Component {
         return `${date.getMonth() + 1}.${date.getDate()}.${date.getFullYear()}`;
     }
 
-    render() {
-        let list = (
-            <tr>
-                <td colSpan="4">No campaigns available :(</td>
-            </tr>
-        );
-
+    
+    buildTableList() {
+        let list = (<tr>
+            <td colSpan="4">No campaigns available :(</td>
+        </tr>);
         if (this.state.campaigns.length > 0) {
             list = this.state.campaigns
-                     .map(c => (
-                         <tr key={c.id}>
-                             <td>{c.name}</td>
-                             <td>{c.product.name}</td>
-                             <td>{this.formatDate(c.start)}</td>
-                             <td>{this.formatDate(c.end)}</td>
-                         </tr>
-                     ));
+                .map(c => (<tr key={c.id}>
+                    <td>{c.name}</td>
+                    <td>{c.product.name}</td>
+                    <td>{this.formatDate(c.start)}</td>
+                    <td>{this.formatDate(c.end)}</td>
+                </tr>));
         }
+        return list;
+    }
 
-        let columnHeaders = this.state.columns
+    buildTableHeaders() {
+        return this.state.columns
             .map(col => {
                 let arrow = null;
                 if (this.state.filter.sortBy === col.key) {
                     let orderClasses = this.state.filter.ascending
                         ? ["fa", "fa-sort-asc"]
                         : ["fa", "fa-sort-desc"];
-
-                    arrow = (<i
-                        className={orderClasses.join(' ')}></i>);
+                    arrow = (<i className={orderClasses.join(' ')}></i>);
                 }
-
-
                 return (<th key={col.key} style={{
                     cursor: 'pointer'
-                }}> 
+                }}>
                     <div onClick={() => this.handleSortBy(col.key)}>
                         {col.title}
                         {arrow}
                     </div>
                 </th>);
             });
+    }
+
+    render() {
+        let list = this.buildTableList();
+
+        let columnHeaders = this.buildTableHeaders();
         return (
             <div>
                 <h1>Campaigns List</h1>
@@ -148,12 +150,14 @@ class CampaignsList extends Component {
                     </tbody>
                 </table>
                 <Pagination 
+                    currentPage={this.state.filter.page}
                     totalItems={this.state.totalItems} 
                     pageSize={this.state.filter.pageSize}
                     onChangePage={(page) => this.handlePageChange(page)} />
             </div>
         );
     }
+
 }
 
 export default CampaignsList;

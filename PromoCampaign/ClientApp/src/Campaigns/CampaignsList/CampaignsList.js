@@ -113,7 +113,11 @@ class CampaignsList extends Component {
                     arrow = (<i
                         className={orderClasses.join(' ')}></i>);
                 }
-                return (<th key={col.key}> 
+
+
+                return (<th key={col.key} style={{
+                    cursor: 'pointer'
+                }}> 
                     <div onClick={() => this.handleSortBy(col.key)}>
                         {col.title}
                         {arrow}

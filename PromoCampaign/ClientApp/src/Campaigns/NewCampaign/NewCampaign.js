@@ -86,7 +86,7 @@ class NewCampaign extends Component {
                             }
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label>Select start and end date</label>
                         <br/>
                         <DateRangePicker

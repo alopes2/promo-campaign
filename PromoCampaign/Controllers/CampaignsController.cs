@@ -35,21 +35,26 @@ namespace PromoCampaign.Controllers
         [HttpPost()]
         public async Task<IActionResult> AddNewCampaign([FromBody] SaveCampaignResource newCampaignResource) 
         {
+            // Basic validations
             if (!ModelState.IsValid) {
                 return BadRequest("Please, check your properties' values");
             }
-
-            if (newCampaignResource.ProductId == 0) {
+            
+            var productWasntSelected = newCampaignResource.ProductId == 0;
+            if (productWasntSelected) {
                 return BadRequest("Please, select a product");
             }
 
-            if (newCampaignResource.Start.CompareTo(DateTime.Now) <= 0) {
+            var startDateIsBeforeToday = newCampaignResource.Start.CompareTo(DateTime.Now) <= 0;
+            if (startDateIsBeforeToday) {
                 return BadRequest("The start date needs to be later than today");
             }
-
-            if (newCampaignResource.Start.CompareTo(newCampaignResource.End) > 0) {
+            
+            var endDateIsBeforeStartDate = newCampaignResource.Start.CompareTo(newCampaignResource.End) > 0;
+            if (endDateIsBeforeStartDate) {
                 return BadRequest("The start date needs to be later than the end date");
             }
+
             var newCampaign = _mapper.Map<SaveCampaignResource, Campaign>(newCampaignResource);
 
             var campaign =  await service.AddCampaignAsync(newCampaign);

@@ -11,7 +11,14 @@ namespace PromoCampaign.Core.Extensions
         public static IQueryable<Campaign> ApplyFiltering(this IQueryable<Campaign> query, CampaignQuery queryObj) 
         {
             if (queryObj.IsActive.HasValue) {
-                query = query.Where(v => v.IsActive == queryObj.IsActive);
+                if (!queryObj.IsActive.Value) {
+                    // return campaigns that IsActive is false and today is after end date
+                    query = query.Where(v => !v.IsActive || v.End.CompareTo(DateTime.Now) < 0);
+                } else {
+                    // return campaigns that IsActive is true and today is before end date
+                    query = query.Where(v => v.IsActive && v.End.CompareTo(DateTime.Now) > 0);
+                }
+                
             }
 
             return query;

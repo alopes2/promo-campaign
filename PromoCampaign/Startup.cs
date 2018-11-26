@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -56,12 +58,12 @@ namespace PromoCampaign
             }
             else
             {
+                //Execute Migrations
+                UpdateDatabase(app);
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
 
-            //Execute Migrations
-            UpdateDatabase(app);
             
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -94,7 +96,8 @@ namespace PromoCampaign
             {
                 using (var context = serviceScope.ServiceProvider.GetService<PromoCampaignDbContext>())
                 {
-                    context.Database.Migrate();
+                    if(context.Database.GetPendingMigrations().Count() > 0)
+                        context.Database.Migrate();
                 }
             }
         }

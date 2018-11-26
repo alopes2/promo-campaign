@@ -6,9 +6,9 @@ services:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=MyComplexPassword!234
     expose:
-      - "1443"
+      - "1433"
     ports:
-      - "1443:1443"
+      - "1433:1433"
   app:
     build:
       context: .

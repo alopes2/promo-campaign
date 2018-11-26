@@ -49,6 +49,26 @@ dotnet 2.1.500
 NodeJS
 Docker
 ```
+### Running
+
+This project is set with Docker and docker-compose to run a production ready version in your local machine.
+Just type
+```
+docker-compose up
+```
+And it should build the images and run the containers connected.
+Once the containers are up, the application will udpate the database with the current migrations when it first runs.
+
+If it fails, type
+```
+docker-compose up --build
+```
+To build the images again.
+
+And if it fails again that's because the application containers is up before the database container.
+Just re-run the first command.
+
+To start using it just access http://localhost:5000
 
 ### Installing
 

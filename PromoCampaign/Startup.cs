@@ -42,6 +42,7 @@ namespace PromoCampaign
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +58,15 @@ namespace PromoCampaign
                 app.UseHsts();
             }
 
+            using (var serviceScope = app.ApplicationServices
+                    .GetRequiredService<IServiceScopeFactory>()
+                    .CreateScope())
+                {
+                    using (var context = serviceScope.ServiceProvider.GetService<PromoCampaignDbContext>())
+                    {
+                        context.Database.Migrate();
+                    }
+            }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

@@ -1,10 +1,10 @@
 version: "3"
 services:
-  localhost:
+  sqlserver:
     image: "microsoft/mssql-server-linux"
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=MyStrongPassword!234
+      - SA_PASSWORD=MyComplexPassword!234
     expose:
       - "1443"
     ports:

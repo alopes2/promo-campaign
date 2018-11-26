@@ -9,3 +9,14 @@
 /home/andre/PromoCampaign/PromoCampaign.Core/obj/Debug/netcoreapp2.1/PromoCampaign.Core.AssemblyInfo.cs
 /home/andre/PromoCampaign/PromoCampaign.Core/obj/Debug/netcoreapp2.1/PromoCampaign.Core.dll
 /home/andre/PromoCampaign/PromoCampaign.Core/obj/Debug/netcoreapp2.1/PromoCampaign.Core.pdb
+C:\Users\alopes2\Source\Repos\promo-campaign\PromoCampaign.Core\bin\Debug\netcoreapp2.1\PromoCampaign.Core.deps.json
+C:\Users\alopes2\Source\Repos\promo-campaign\PromoCampaign.Core\bin\Debug\netcoreapp2.1\PromoCampaign.Core.runtimeconfig.json
+C:\Users\alopes2\Source\Repos\promo-campaign\PromoCampaign.Core\bin\Debug\netcoreapp2.1\PromoCampaign.Core.runtimeconfig.dev.json
+C:\Users\alopes2\Source\Repos\promo-campaign\PromoCampaign.Core\bin\Debug\netcoreapp2.1\PromoCampaign.Core.dll
+C:\Users\alopes2\Source\Repos\promo-campaign\PromoCampaign.Core\bin\Debug\netcoreapp2.1\PromoCampaign.Core.pdb
+C:\Users\alopes2\Source\Repos\promo-campaign\PromoCampaign.Core\obj\Debug\netcoreapp2.1\PromoCampaign.Core.csprojAssemblyReference.cache
+C:\Users\alopes2\Source\Repos\promo-campaign\PromoCampaign.Core\obj\Debug\netcoreapp2.1\PromoCampaign.Core.csproj.CoreCompileInputs.cache
+C:\Users\alopes2\Source\Repos\promo-campaign\PromoCampaign.Core\obj\Debug\netcoreapp2.1\PromoCampaign.Core.AssemblyInfoInputs.cache
+C:\Users\alopes2\Source\Repos\promo-campaign\PromoCampaign.Core\obj\Debug\netcoreapp2.1\PromoCampaign.Core.AssemblyInfo.cs
+C:\Users\alopes2\Source\Repos\promo-campaign\PromoCampaign.Core\obj\Debug\netcoreapp2.1\PromoCampaign.Core.dll
+C:\Users\alopes2\Source\Repos\promo-campaign\PromoCampaign.Core\obj\Debug\netcoreapp2.1\PromoCampaign.Core.pdb

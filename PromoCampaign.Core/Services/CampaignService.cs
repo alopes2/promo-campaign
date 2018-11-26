@@ -27,10 +27,10 @@ namespace PromoCampaign.Core.Services
             return newCampaign;
         }
 
-        public async Task<IEnumerable<Campaign>> GetCampaignsAndCountByQueryResultAsync()
+        public async Task<QueryResult<Campaign>> GetCampaignsAndCountByQueryResultAsync(CampaignQuery query)
         {
             return await _repository
-                .GetRangeAndTotalNumberByQueryObject();
+                .GetRangeAndTotalNumberByQueryObject(query);
         }
     }
 }

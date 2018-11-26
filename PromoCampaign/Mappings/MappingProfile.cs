@@ -11,6 +11,8 @@ namespace PromoCampaign.Mappings
             // Domain to API Resource
             CreateMap<Product, ProductResource>(); 
             CreateMap<Campaign, CampaignResource>();
+            CreateMap(typeof(QueryResult<>), typeof(QueryResultResource<>));
+
 
             // API Resource to Domain
             CreateMap<ProductResource, Product>(); 

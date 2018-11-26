@@ -6,7 +6,7 @@ namespace PromoCampaign.Core.Repository
 {
     public interface ICampaignRepository
     {
-        Task<IEnumerable<Campaign>> GetRangeAndTotalNumberByQueryObject();
+        Task<QueryResult<Campaign>> GetRangeAndTotalNumberByQueryObject(CampaignQuery queryObj);
         Task AddAsync(Campaign newCampaign);
     }
 }

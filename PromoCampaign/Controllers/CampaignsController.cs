@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PromoCampaign.Controllers.Resources;
+using PromoCampaign.Core;
 using PromoCampaign.Core.Models;
 using PromoCampaign.Core.Services;
 
@@ -22,11 +23,11 @@ namespace PromoCampaign.Controllers
 
         }
         [HttpGet()]
-        public async Task<IActionResult> GetCampaignsByQueryResult()
+        public async Task<IActionResult> GetCampaignsByQueryResult(CampaignQuery queryParams)
         {
-            var campaigns = await service.GetCampaignsAndCountByQueryResultAsync();
+            var campaigns = await service.GetCampaignsAndCountByQueryResultAsync(queryParams);
             var campaignsResources = _mapper
-                .Map<IEnumerable<Campaign>, IEnumerable<CampaignResource>>(campaigns);
+                .Map<QueryResult<Campaign>, QueryResult<CampaignResource>>(campaigns);
 
             return Ok(campaignsResources);
         }
@@ -38,7 +39,7 @@ namespace PromoCampaign.Controllers
                 return BadRequest("Please, check your properties' values");
             }
 
-            if (newCampaignResource.ProductId == null) {
+            if (newCampaignResource.ProductId == 0) {
                 return BadRequest("Please, select a product");
             }
 

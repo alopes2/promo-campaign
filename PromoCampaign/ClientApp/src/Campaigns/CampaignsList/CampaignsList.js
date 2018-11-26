@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {utility} from '../../shared/utility';
 import './CampaignsList.scss';
+import Pagination from '../../shared/Pagination';
 class CampaignsList extends Component {
     state = {
+        totalItems: 0,
         campaigns: [],
         filter: {
             isActive: null,
-            start: null,
-            end: null,
-            productId: null,
             sortBy: null,
             ascending: true,
             page: 1,
@@ -24,9 +24,12 @@ class CampaignsList extends Component {
 
     async fetchCampaigns() {
         try {
-            const response = await axios.get('/api/Campaigns');
-            console.log(response);
-            this.setState({campaigns: response.data});
+            const query = this.state.filter;
+            const response = await axios.get('/api/Campaigns?' + utility.toQueryString(query));
+            this.setState({
+                campaigns: response.data.items,
+                totalItems: response.data.totalItems
+            });
         }catch (e) {
             console.error(e);
         }
@@ -41,12 +44,38 @@ class CampaignsList extends Component {
             ...this.state.filter,
             isActive: event.target.value
         };
-        console.log(updatedFilter);
-        this.setState({filter: updatedFilter})
+        this.setState({filter: updatedFilter}, () => {
+            this.fetchCampaigns();
+        });
+    }
+
+    handlePageChange = (page) => {
+        const updatedFilter = {
+            ...this.state.filter,
+            page: page
+        };
+        this.setState({filter: updatedFilter}, () => {
+            this.fetchCampaigns();
+        });
     }
 
     handleSortBy = (column) => {
+        let ascending = this.state.filter.ascending;
 
+        if (this.state.filter.sortBy === column) {
+            ascending = !ascending;
+        } else {
+            ascending = true;
+        }
+        const updatedFilter = {
+            ...this.state.filter,
+            sortBy: column,
+            ascending: ascending
+        };
+
+        this.setState({filter: updatedFilter}, () => {
+            this.fetchCampaigns();
+        });
     }
 
     formatDate(stringDate) {
@@ -76,7 +105,6 @@ class CampaignsList extends Component {
         let columnHeaders = this.state.columns
             .map(col => {
                 let arrow = null;
-                console.log(col.key);
                 if (this.state.filter.sortBy === col.key) {
                     let orderClasses = this.state.filter.ascending
                         ? ["fa", "fa-sort-asc"]
@@ -97,7 +125,7 @@ class CampaignsList extends Component {
                 <h1>Campaigns List</h1>
                 <div className="well">
                         <div className="form-group">
-                            <label for="active">Active status</label>
+                            <label htmlFor="active">Active status</label>
                             <select name="active" id="active" className="form-control" onChange={this.handleFilterChange}>
                                 <option value=""></option>
                                 <option value={true}>Active</option>
@@ -115,6 +143,10 @@ class CampaignsList extends Component {
                         {list}
                     </tbody>
                 </table>
+                <Pagination 
+                    totalItems={this.state.totalItems} 
+                    pageSize={this.state.filter.pageSize}
+                    onChangePage={(page) => this.handlePageChange(page)} />
             </div>
         );
     }

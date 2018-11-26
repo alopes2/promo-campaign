@@ -25,10 +25,12 @@ namespace PromoCampaign
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add database connection
             services.AddDbContext<PromoCampaignDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default"), x => x.MigrationsAssembly("PromoCampaign.Data")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            //Dependency injection
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICampaignRepository, CampaignRepository>();
             services.AddTransient<IProductService, ProductService>();
@@ -58,15 +60,9 @@ namespace PromoCampaign
                 app.UseHsts();
             }
 
-            using (var serviceScope = app.ApplicationServices
-                    .GetRequiredService<IServiceScopeFactory>()
-                    .CreateScope())
-                {
-                    using (var context = serviceScope.ServiceProvider.GetService<PromoCampaignDbContext>())
-                    {
-                        context.Database.Migrate();
-                    }
-            }
+            //Execute Migrations
+            UpdateDatabase(app);
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
@@ -88,5 +84,22 @@ namespace PromoCampaign
                 }
             });
         }
+
+        // Wrap method to execute migrations when application first starts
+        private static void UpdateDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>()
+                .CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetService<PromoCampaignDbContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
+        }
     }
+    
 }
+
+

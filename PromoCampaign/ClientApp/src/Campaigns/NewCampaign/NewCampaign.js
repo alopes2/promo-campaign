@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { DateRangePicker } from 'react-dates';
 
 class NewCampaign extends Component {
     state = {
@@ -7,8 +8,8 @@ class NewCampaign extends Component {
         campaign: {
             name: '',
             productId: 1,
-            start: '',
-            end: ''
+            start: null,
+            end: null
         }
     };
 
@@ -48,6 +49,16 @@ class NewCampaign extends Component {
         this.props.history.push('/campaigns');
     }
 
+    setDates = (updatedDates) => {
+        const updatedCampaign = {
+            ...this.state.campaign,
+            start: updatedDates.startDate,
+            end: updatedDates.endDate
+        };
+
+        this.setState({ campaign: updatedCampaign });
+    }
+
     render() {
         return (
             <div>
@@ -75,7 +86,20 @@ class NewCampaign extends Component {
                             }
                         </select>
                     </div>
-                    <div className="form-group">
+                    <div class="form-group">
+                        <label>Select start and end date</label>
+                        <br/>
+                        <DateRangePicker
+                        startDate={this.state.campaign.start} // momentPropTypes.momentObj or null,
+                        startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                        endDate={this.state.campaign.end} // momentPropTypes.momentObj or null,
+                        endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                        onDatesChange={(updateDates) => this.setDates(updateDates)} // PropTypes.func.isRequired,
+                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                        onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                        />
+                    </div>
+                    {/* <div className="form-group">
                         <label htmlFor="start">Start</label>
                         <input 
                             onChange={(event) => this.handleInputChange(event, "start")}
@@ -86,7 +110,7 @@ class NewCampaign extends Component {
                         <input 
                             onChange={(event) => this.handleInputChange(event, "end")}
                             className="form-control" type="date" name="end" id="end" />
-                    </div>
+                    </div> */}
                     <button className="btn btn-warning" onClick={this.discardChangesHandler} type="button">discard changes</button>
                     <button className="btn btn-info" type="submit">add new campaign</button>
                 </form>

@@ -1,12 +1,19 @@
 # Promo Campaign Project
 
-Project for adding promotional campaigns for products
+Project for adding promotional campaigns for products.
 
 ## Explaning Folder and Files
 
 ### PromoCampaign
 
 Our main project.
+
+This project was built using .NET Core default React project built with
+```
+dotnet new react
+```
+Then replacing the default ClientApp react project with an updated version built with [Create React App (2.0.3)](https://github.com/facebook/create-react-app)
+
 It contains the API endpoints and serves our frontend client app.
 It also contains all files related to the endpoint and project configuration.
 * Controllers/Resources contains our API Resources/ViewModels .
@@ -15,6 +22,12 @@ It also contains all files related to the endpoint and project configuration.
 * ClientApp is our frontend application built with ReactJS.
 
 ### PromoCampaign.Core
+
+This project was built using .NET Core default console project built with
+```
+dotnet new console
+```
+This was selected due to some conflicts with classlib project
 
 This project contains everything that designs our application business logics and behaviors.
 * Extenstions contains all extension files like IQueryableExtensions.cs, which adds filtering methods to our IQueryable interface. 
@@ -27,6 +40,12 @@ This project contains everything that designs our application business logics an
 * IUnitOfWork is the interfacing represent what the UnitOfWork should be
 
 ### PromoCampaign.Data
+
+This project was built using .NET Core default console project built with
+```
+dotnet new console
+```
+This was selected due to some conflicts with classlib project
 
 This project contains the connection to the database (in this case SQL Server)
 * Configuration are all files to configure the domain models in the database
@@ -101,16 +120,35 @@ To start using it just access http://localhost:5000
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+### Backend
 
-## Deployment
+To run backend unit tests you need to navigate to PromoCampaign.Tests project folder
+```
+cd ./PromoCampaign.Tests
+```
 
-Add additional notes about how to deploy this on a live system
+And then just run
+```
+dotnet test
+```
+
+### Frontend
+
+There wasn't any custom tests built yet, just the ones that comes from create-react-app
+To run test you need to navigate to the ClientApp folder
+```
+cd ./PromoCampaign/ClientApp
+```
+
+And then just run 
+```
+npm test
+```
 
 ## Built With
 
 * [.NET Core 2.1.500](https://docs.microsoft.com/en-us/dotnet/core/) - Backend Framwork
-* [React](https://reactjs.org/docs/getting-started.html) - Frontend Framework
+* [ReactJS 16.6](https://reactjs.org/docs/getting-started.html) - Frontend Framework
 * [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) - Used to connect to the database
 * [AutoMapper](http://docs.automapper.org/en/stable/) - Used to map domain models to api resources/viewmodels and vice-versa
 * [Bootstrap (3.3.7)](https://getbootstrap.com/docs/3.3/) - Frontend Style Framework
@@ -121,3 +159,5 @@ Add additional notes about how to deploy this on a live system
 * [Aphrodite](https://github.com/Khan/aphrodite) - Used for style theme dependency in react-dates
 * [react-with-styles-interface-aphrodite](https://github.com/airbnb/react-with-styles-interface-aphrodite) - Interface to use react-with-styles with Aphrodite
 * [Docker](https://www.docker.com/get-started) - Used to deploy application to containers
+* [XUnit](https://xunit.github.io) - Testing framework
+* [Moq](https://github.com/moq/moq4/) - Used for mocking classes in test unit

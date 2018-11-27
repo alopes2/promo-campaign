@@ -6,7 +6,7 @@ namespace PromoCampaign.Core.Services
 {
     public interface ICampaignService
     {
-         Task<QueryResult<Campaign>> GetCampaignsAndCountByQueryResultAsync(CampaignQuery query);
+         Task<QueryResult<Campaign>> GetCampaignsAndCountByFilterQueryAsync(CampaignQuery query);
          Task<Campaign> AddCampaignAsync(Campaign newCampaign);
     }
 }

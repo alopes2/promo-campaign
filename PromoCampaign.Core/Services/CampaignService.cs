@@ -27,7 +27,7 @@ namespace PromoCampaign.Core.Services
             return newCampaign;
         }
 
-        public async Task<QueryResult<Campaign>> GetCampaignsAndCountByQueryResultAsync(CampaignQuery query)
+        public async Task<QueryResult<Campaign>> GetCampaignsAndCountByFilterQueryAsync(CampaignQuery query)
         {
             return await _repository
                 .GetRangeAndTotalNumberByQueryObject(query);

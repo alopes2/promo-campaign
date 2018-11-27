@@ -23,9 +23,9 @@ namespace PromoCampaign.Controllers
 
         }
         [HttpGet()]
-        public async Task<IActionResult> GetCampaignsByQueryResult(CampaignQuery queryParams)
+        public async Task<IActionResult> GetCampaignsByFilterQuery(CampaignQuery queryParams)
         {
-            var campaigns = await service.GetCampaignsAndCountByQueryResultAsync(queryParams);
+            var campaigns = await service.GetCampaignsAndCountByFilterQueryAsync(queryParams);
             var campaignsResources = _mapper
                 .Map<QueryResult<Campaign>, QueryResult<CampaignResource>>(campaigns);
 

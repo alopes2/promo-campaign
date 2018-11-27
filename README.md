@@ -143,11 +143,10 @@ To start using it just access http://localhost:5000
 First install the client dependencies by running the follwing command in the client folder:
 
 ```
-cd PromoCampaign/ClientApp
 npm install
 ```
 
-Then you need to restore the dotnet dependencies by running the following command in the root folder
+Then you need to restore the dotnet dependencies by running the following command in the server folder
 
 ```
 dotnet restore
@@ -165,7 +164,15 @@ Then just run the following command for running the application
 dotnet run -p PromoCampaign/PromoCampaign.csproj
 ```
 
-To start using it just access http://localhost:5000
+And the client app
+
+```
+npm start
+```
+
+To start using it just access http://localhost:3000
+
+In this setup the API should be accessible from http://localhost:5000/api/{endpoint}
 
 ## Running the tests
 

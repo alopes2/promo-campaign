@@ -95,7 +95,7 @@ class CampaignsList extends Component {
         let list = (<tr>
             <td colSpan="4">No campaigns available :(</td>
         </tr>);
-        if (this.state.campaigns.length > 0) {
+        if (this.state.totalItems > 0) {
             list = this.state.campaigns
                 .map(c => (<tr key={c.id}>
                     <td>{c.name}</td>

@@ -4,7 +4,7 @@ if(process.env.NODE_ENV === 'development') {
 }
 
 if(process.env.NODE_ENV === 'production') {
-    environment.BASE_URL = '/'
+    environment.BASE_URL = '/api/'
 }
 
 export default environment;

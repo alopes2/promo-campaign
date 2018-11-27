@@ -54,7 +54,6 @@ namespace PromoCampaign
             else
             {
                 //Execute Migrations
-                UpdateDatabase(app);
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
@@ -69,6 +68,7 @@ namespace PromoCampaign
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
             });
+            UpdateDatabase(app);
 
         }
 

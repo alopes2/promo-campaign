@@ -2,24 +2,46 @@
 
 Project for adding promotional campaigns for products.
 
-## Explaning Folder and Files
+## Client folder
 
-### PromoCampaign
+This is our frontend client app built using [create-react-app 2.1.1](https://github.com/facebook/create-react-app)
 
-Our main project.
+App folders are separated by features.
+
+### Running
+
+You first need to install all dependencies by executing
+```
+npm i
+```
+
+Then just execute
+```
+npm start
+```
+
+Endpoints will only work after API is up
+
+## server
+
+Our API project.
+
+The project was separted in API, Core features and Data access project.
+
+### PromoCampaign (API)
+
+This is our API
 
 This project was built using .NET Core default React project built with
 ```
-dotnet new react
+dotnet new webapi
 ```
-Then replacing the default ClientApp react project with an updated version built with [Create React App (2.0.3)](https://github.com/facebook/create-react-app)
 
 It contains the API endpoints and serves our frontend client app.
 It also contains all files related to the endpoint and project configuration.
 * Controllers/Resources contains our API Resources/ViewModels .
 * Controllers refers to our endpoints.
 * Mappings contains our MappingProfile.cs file, which is used by AutoMapper to map domain models to resource models and vice-versa.
-* ClientApp is our frontend application built with ReactJS.
 
 ### PromoCampaign.Core
 
@@ -54,6 +76,33 @@ This project contains the connection to the database (in this case SQL Server)
 * PromoCampaignDbContext.cs is the database context for SQL Server using EntityFramework Core
 * UnitOfWork is the implementation of the IUnitOfWork for EntityFramework SQL Server
 
+### Running
+
+To run the API you first need a up and running SQL Server in localhost:1433.
+For that we used Docker by executing:
+```
+docker run -p 1433:1433 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=MyComplexPassword!234' -d microsoft/mssql-server-linux
+```
+
+Set the environment as Development with
+```
+export ASPNETCORE_ENVIRONMENT=Development
+```
+
+After that just restore all packages with
+```
+dotnet restore
+```
+
+Then run the project
+```
+dotnet run -p PromoCampaign/PromoCampaign.csproj
+```
+
+## Nginx
+
+This is a folder container nginx configuration for deploying using docker.
+It has the purpose to route requests to the client or the server.
 
 ## Getting Started
 
@@ -122,9 +171,9 @@ To start using it just access http://localhost:5000
 
 ### Backend
 
-To run backend unit tests you need to navigate to PromoCampaign.Tests project folder
+To run backend unit tests you need to navigate to PromoCampaign.Tests project folder in the server foler
 ```
-cd ./PromoCampaign.Tests
+cd ./server/PromoCampaign.Tests
 ```
 
 And then just run

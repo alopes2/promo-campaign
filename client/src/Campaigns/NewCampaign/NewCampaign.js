@@ -26,8 +26,7 @@ class NewCampaign extends Component {
             productId: {
                 elementType: 'select',
                 elementConfig: {
-                    options: [
-                    ]
+                    options: []
                 },
                 value: 1,
                 validation: {},

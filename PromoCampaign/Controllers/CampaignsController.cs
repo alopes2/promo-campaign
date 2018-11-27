@@ -39,7 +39,11 @@ namespace PromoCampaign.Controllers
             if (!ModelState.IsValid) {
                 return BadRequest("Please, check your properties' values");
             }
-            
+
+            if (String.IsNullOrWhiteSpace(newCampaignResource.Name)) {
+                return BadRequest("Please, add a name to your campaign");
+            }
+
             var productWasntSelected = newCampaignResource.ProductId == 0;
             if (productWasntSelected) {
                 return BadRequest("Please, select a product");

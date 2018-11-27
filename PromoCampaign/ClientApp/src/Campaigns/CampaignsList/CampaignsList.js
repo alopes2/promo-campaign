@@ -31,7 +31,8 @@ class CampaignsList extends Component {
                 totalItems: response.data.totalItems
             });
         }catch (e) {
-            console.error(e);
+            const errorResponse = `${e.response.statusText}: ${e.response.data}`;
+            alert(errorResponse);
         }
     }
 

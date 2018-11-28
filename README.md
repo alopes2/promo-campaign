@@ -210,7 +210,6 @@ npm test
 * [React-Dates](https://github.com/airbnb/react-dates) - Airbnb react library to select dates
 * [Moment](https://momentjs.com/docs/) - Used as dependecy for React-Dates
 * [Aphrodite](https://github.com/Khan/aphrodite) - Used for style theme dependency in react-dates
-* [Aphrodite](https://github.com/Khan/aphrodite) - Used for style theme dependency in react-dates
 * [react-with-styles-interface-aphrodite](https://github.com/airbnb/react-with-styles-interface-aphrodite) - Interface to use react-with-styles with Aphrodite
 * [Docker](https://www.docker.com/get-started) - Used to deploy application to containers
 * [XUnit](https://xunit.github.io) - Testing framework

@@ -174,7 +174,7 @@ To start using it just access http://localhost:3000
 
 In this setup the API should be accessible from http://localhost:5000/api/{endpoint}
 
-## Running the tests
+## Running tests
 
 ### Backend
 

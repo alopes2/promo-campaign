@@ -188,27 +188,15 @@ class NewCampaign extends Component {
                         <label>Select start and end date</label>
                         <br/>
                         <DateRangePicker
-                        startDate={this.state.campaignForm.start.value} // momentPropTypes.momentObj or null,
-                        startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                        endDate={this.state.campaignForm.end.value} // momentPropTypes.momentObj or null,
-                        endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                        onDatesChange={(updateDates) => this.setDates(updateDates)} // PropTypes.func.isRequired,
-                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                        onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                        startDate={this.state.campaignForm.start.value} 
+                        startDateId="your_unique_start_date_id" 
+                        endDate={this.state.campaignForm.end.value} 
+                        endDateId="your_unique_end_date_id" 
+                        onDatesChange={(updateDates) => this.setDates(updateDates)} 
+                        focusedInput={this.state.focusedInput} 
+                        onFocusChange={focusedInput => this.setState({ focusedInput })} 
                         />
                     </div>
-                    {/* <div className="form-group">
-                        <label htmlFor="start">Start</label>
-                        <input 
-                            onChange={(event) => this.handleInputChange(event, "start")}
-                            className="form-control" type="date" name="start" id="start" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="end">End</label>
-                        <input 
-                            onChange={(event) => this.handleInputChange(event, "end")}
-                            className="form-control" type="date" name="end" id="end" />
-                    </div> */}
                     <button className="btn btn-warning" onClick={this.discardChangesHandler} type="button">discard changes</button>
                     <button className="btn btn-info" type="submit">add new campaign</button>
                 </form>

@@ -194,6 +194,9 @@ class NewCampaign extends Component {
                         endDateId="your_unique_end_date_id" 
                         onDatesChange={(updateDates) => this.setDates(updateDates)} 
                         focusedInput={this.state.focusedInput} 
+                        isOutsideRange={(day) => {
+                            return new Date() >= day._d;
+                            }}
                         onFocusChange={focusedInput => this.setState({ focusedInput })} 
                         />
                     </div>

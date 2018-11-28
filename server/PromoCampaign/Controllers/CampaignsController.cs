@@ -12,8 +12,7 @@ using PromoCampaign.Core.Services;
 namespace PromoCampaign.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class CampaignsController : ControllerBase
+    public class CampaignsController : Controller
     {
         private readonly ICampaignService service;
         private readonly IMapper _mapper;

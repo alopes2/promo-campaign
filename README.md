@@ -191,10 +191,8 @@ dotnet test
 ### Frontend
 
 There wasn't any custom tests built yet, just the ones that comes from create-react-app
-To run test you need to navigate to the ClientApp folder
-```
-cd ./PromoCampaign/ClientApp
-```
+
+To run test you need to navigate to the Client folder
 
 And then just run 
 ```

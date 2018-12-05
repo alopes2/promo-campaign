@@ -10,5 +10,7 @@ namespace PromoCampaign.Controllers.Resources
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
         public bool IsActive { get; set; }
+        public DateTime CreatedAt { get; set; }
+
     }
 }

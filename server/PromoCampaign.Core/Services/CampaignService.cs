@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using PromoCampaign.Core.Models;
@@ -19,6 +20,7 @@ namespace PromoCampaign.Core.Services
 
         public async Task<Campaign> AddCampaignAsync(Campaign newCampaign)
         {
+            newCampaign.CreatedAt = DateTime.Now;
             await _repository
                 .AddAsync(newCampaign);
             

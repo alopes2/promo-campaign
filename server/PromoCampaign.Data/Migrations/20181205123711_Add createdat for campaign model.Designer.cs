@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PromoCampaign.Data;
 
 namespace PromoCampaign.Data.Migrations
 {
     [DbContext(typeof(PromoCampaignDbContext))]
-    partial class PromoCampaignDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181205123711_Add createdat for campaign model")]
+    partial class Addcreatedatforcampaignmodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

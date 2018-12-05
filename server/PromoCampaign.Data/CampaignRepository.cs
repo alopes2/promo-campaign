@@ -49,6 +49,7 @@ namespace PromoCampaign.Data
         }
         public async Task AddAsync(Campaign newCampaign)
         {
+            
             await _context
                 .Campaigns
                 .AddAsync(newCampaign);

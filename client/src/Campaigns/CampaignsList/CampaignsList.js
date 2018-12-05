@@ -86,8 +86,11 @@ class CampaignsList extends Component {
     }
 
     formatDate(stringDate) {
-        const date = new Date(stringDate);
-        return `${date.getMonth() + 1}.${date.getDate()}.${date.getFullYear()}`;
+        if(stringDate) {
+            const date = new Date(stringDate);
+            return `${date.getMonth() + 1}.${date.getDate()}.${date.getFullYear()}`;
+        }
+        return '';
     }
 
     
@@ -102,6 +105,7 @@ class CampaignsList extends Component {
                     <td>{c.product.name}</td>
                     <td>{this.formatDate(c.start)}</td>
                     <td>{this.formatDate(c.end)}</td>
+                    <td>{this.formatDate(c.createdAt)}</td>
                 </tr>));
         }
         return list;
@@ -149,6 +153,7 @@ class CampaignsList extends Component {
                     <thead>
                         <tr>
                             {columnHeaders}
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
